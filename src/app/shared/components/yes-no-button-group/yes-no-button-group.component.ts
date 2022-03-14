@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 enum YesNoButtonGroupOptions {
   Yes = 'yes',
@@ -14,6 +14,7 @@ export class YesNoButtonGroupComponent implements OnInit {
 
   @Input() public value: YesNoButtonGroupOptions = null;
   @Input() public label = '';
+  @Output() public valueChange = new EventEmitter<YesNoButtonGroupOptions>();
   public options = YesNoButtonGroupOptions;
 
   constructor() { }
@@ -23,6 +24,7 @@ export class YesNoButtonGroupComponent implements OnInit {
 
   public activate(value: YesNoButtonGroupOptions) {
     this.value = value;
+    this.valueChange.emit(value);
   }
 
 }
