@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 enum YesNoButtonGroupOptions {
   Yes = 'yes',
@@ -9,7 +9,14 @@ enum YesNoButtonGroupOptions {
 @Component({
   selector: 'app-yes-no-button-group',
   templateUrl: './yes-no-button-group.component.html',
-  styleUrls: ['./yes-no-button-group.component.scss']
+  styleUrls: ['./yes-no-button-group.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: forwardRef(() => YesNoButtonGroupComponent)
+    }
+  ]
 })
 export class YesNoButtonGroupComponent implements ControlValueAccessor {
 
@@ -23,6 +30,7 @@ export class YesNoButtonGroupComponent implements ControlValueAccessor {
   public writeValue(value: YesNoButtonGroupOptions): void {
     this.value = value;
     this.onChange(this.value);
+    this.valueChange.emit(this.value);
   }
 
   public registerOnChange(fn: (value: YesNoButtonGroupOptions) => void): void {
@@ -38,8 +46,7 @@ export class YesNoButtonGroupComponent implements ControlValueAccessor {
   }
 
   public activate(value: YesNoButtonGroupOptions) {
-    this.value = value;
-    this.valueChange.emit(value);
+    this.writeValue(value);
   }
 
 }
