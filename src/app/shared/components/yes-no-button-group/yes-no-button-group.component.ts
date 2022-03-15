@@ -1,5 +1,6 @@
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import * as uuid from 'uuid';
 
 enum YesNoButtonGroupOptions {
   Yes = 'yes',
@@ -23,9 +24,14 @@ export class YesNoButtonGroupComponent implements ControlValueAccessor {
   @Input() public value: YesNoButtonGroupOptions = null;
   @Input() public label = '';
   @Output() public valueChange = new EventEmitter<YesNoButtonGroupOptions>();
+  public id: string;
   public options = YesNoButtonGroupOptions;
   public onChange = (value: YesNoButtonGroupOptions) => { };
   public onTouched = () => {};
+
+  constructor() {
+    this.id = `yes-no-button-group-${uuid.v1()}`;
+  }
 
   public writeValue(value: YesNoButtonGroupOptions): void {
     this.value = value;
