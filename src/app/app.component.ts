@@ -15,7 +15,10 @@ export class AppComponent {
   
   ngOnInit() {
     this.form = this.formBuilder.group({
-      yesNoAnswer: [null]
+      yesNoAnswer: [{
+        value: null,
+        disabled: false
+      }]
     })
   }
 

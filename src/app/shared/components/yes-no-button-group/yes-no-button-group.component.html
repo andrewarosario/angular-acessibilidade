@@ -7,7 +7,8 @@
     <button 
         appKeyboardManagedItem
         (focused)="activate(options.Yes)"
-        role="radio" 
+        role="radio"
+        [attr.disabled]="disabled ? disabled : null"
         [attr.tabindex]="value === options.Yes || value === null ? 0 : -1" 
         [attr.aria-checked]="value === options.Yes" 
         type="button" 
@@ -19,6 +20,7 @@
         appKeyboardManagedItem
         (focused)="activate(options.No)"
         role="radio" 
+        [attr.disabled]="disabled ? disabled : null"
         [attr.tabindex]="value === options.No || value === null ? 0 : -1" 
         [attr.aria-checked]="value === options.No" 
         type="button" 

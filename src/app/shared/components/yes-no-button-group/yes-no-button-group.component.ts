@@ -20,7 +20,7 @@ enum YesNoButtonGroupOptions {
   ]
 })
 export class YesNoButtonGroupComponent implements ControlValueAccessor {
-
+  @Input() disabled = false;
   @Input() public value: YesNoButtonGroupOptions = null;
   @Input() public label = '';
   @Output() public valueChange = new EventEmitter<YesNoButtonGroupOptions>();
@@ -48,7 +48,7 @@ export class YesNoButtonGroupComponent implements ControlValueAccessor {
   }
 
   public setDisabledState?(isDisabled: boolean): void {
-    throw new Error('Method not implemented.');
+    this.disabled = isDisabled;
   }
 
   public activate(value: YesNoButtonGroupOptions) {
