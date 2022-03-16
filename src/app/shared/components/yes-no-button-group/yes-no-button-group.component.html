@@ -5,6 +5,7 @@
     class="button-group">
     <label [attr.id]="id" class="label">{{ label }}</label>
     <button 
+        appKeyboardManagedItem
         role="radio" 
         [attr.tabindex]="value === options.Yes || value === null ? 0 : -1" 
         [attr.aria-checked]="value === options.Yes" 
@@ -14,6 +15,7 @@
         (click)="activate(options.Yes)">Yes
     </button>
     <button 
+        appKeyboardManagedItem
         role="radio" 
         [attr.tabindex]="value === options.No || value === null ? 0 : -1" 
         [attr.aria-checked]="value === options.No" 
