@@ -7,21 +7,4 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'a11y-p1';
-  form: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) {
-  }
-  
-  ngOnInit() {
-    this.form = this.formBuilder.group({
-      yesNoAnswer: [{
-        value: null
-      }]
-    })
-  }
-
-  submit(): void {
-    console.log(this.form.value);
-  }
 }
