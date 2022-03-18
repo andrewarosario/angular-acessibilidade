@@ -20,7 +20,9 @@ export class AccessibleModalComponent implements OnInit {
     this.modalService.open({
       templateRef: this.modalTemplateRef,
       title: 'User Details'
-    })
+    });
+
+    this.modalRef.close();
   }
 
 }
