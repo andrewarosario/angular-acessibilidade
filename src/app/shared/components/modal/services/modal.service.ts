@@ -7,7 +7,7 @@ export interface ModalConfig {
 
 @Injectable()
 export class ModalService {
-    public open(config: ModalConfig) {
+    public open(config: ModalConfig): ModalRef {
         console.log('open called');
         return new ModalRef();
     }
