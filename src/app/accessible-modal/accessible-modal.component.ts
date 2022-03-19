@@ -21,8 +21,6 @@ export class AccessibleModalComponent implements OnInit {
       templateRef: this.modalTemplateRef,
       title: 'User Details'
     });
-
-    this.modalRef.close();
   }
 
 }
