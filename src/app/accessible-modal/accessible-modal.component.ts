@@ -17,7 +17,7 @@ export class AccessibleModalComponent implements OnInit {
   }
 
   public showModal(): void {
-    this.modalService.open({
+    this.modalRef = this.modalService.open({
       templateRef: this.modalTemplateRef,
       title: 'User Details'
     });
