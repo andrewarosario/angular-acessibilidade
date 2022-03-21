@@ -18,6 +18,10 @@
         <label for="age">Age</label>
         <input id="age" type="text">
     </div>
+
+    <label for="info">Subscribe to newsletter</label>
+    <input type="checkbox" name="" id="info" (change)="info = !info">
+    <p [@fade] *ngIf="info">This is a placeholder for more information</p>
     
     <div class="button-group text-align-right">
         <button type="button" class="button button-primary">Submit</button>
