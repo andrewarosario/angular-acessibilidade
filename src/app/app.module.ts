@@ -8,6 +8,7 @@ import { DisableControlModule } from './shared/directives/keyboard-manager/disab
 import { QuestionFormComponent } from './question-form/question-form.component';
 import { ModalModule } from './shared/components/modal/modal.module';
 import { AccessibleModalComponent } from './accessible-modal/accessible-modal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AccessibleModalComponent } from './accessible-modal/accessible-modal.co
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     YesNoButtonGroupModule,
     DisableControlModule,
