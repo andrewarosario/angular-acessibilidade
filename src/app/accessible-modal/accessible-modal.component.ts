@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { fade } from '../shared/animations/fade';
-import { ModalRef, ModalService } from '../shared/components/modal/services/modal.service';
+import { ModalRef } from '../shared/components/modal/models/modal-ref';
+import { ModalService } from '../shared/components/modal/services/modal.service';
 
 @Component({
   selector: 'app-accessible-modal',
