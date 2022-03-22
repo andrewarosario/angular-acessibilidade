@@ -7,17 +7,20 @@
     <form [formGroup]="form" (ngSubmit)="submit()">
         <div class="form-field">
             <label for="firstName">First name</label>
-            <input id="firstName" type="text" formControlName="firstName">
+            <input [attr.aria-invalid]="form.get('firstName').invalid" id="firstName" type="text" formControlName="firstName">
+            <span *ngIf="form.get('firstName')?.errors?.required" class="validation-error">First name is required</span>
         </div>
         
         <div class="form-field">
             <label for="surname">Surname</label>
-            <input id="surname" type="text" formControlName="surname">
+            <input [attr.aria-invalid]="form.get('surname').invalid" id="surname" type="text" formControlName="surname">
+            <span *ngIf="form.get('surname')?.errors?.required" class="validation-error">Surname is required</span>
         </div>
         
         <div class="form-field">
             <label for="age">Age</label>
-            <input id="age" type="text" formControlName="age">
+            <input [attr.aria-invalid]="form.get('age').invalid" id="age" type="text" formControlName="age">
+            <span *ngIf="form.get('age')?.errors?.required" class="validation-error">Age is required</span>
         </div>
     
         <label for="info">Subscribe to newsletter</label>
