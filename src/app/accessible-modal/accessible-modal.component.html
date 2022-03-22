@@ -4,27 +4,29 @@
 <button class="button button-primary" type="button" (click)="showModal()">Show modal</button>
 
 <ng-template #modal>
-    <div class="form-field">
-        <label for="firstName">First name</label>
-        <input id="firstName" type="text" [(value)]="firstName">
-    </div>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-field">
+            <label for="firstName">First name</label>
+            <input id="firstName" type="text" formControlName="firstName">
+        </div>
+        
+        <div class="form-field">
+            <label for="surname">Surname</label>
+            <input id="surname" type="text" formControlName="surname">
+        </div>
+        
+        <div class="form-field">
+            <label for="age">Age</label>
+            <input id="age" type="text" formControlName="age">
+        </div>
     
-    <div class="form-field">
-        <label for="surname">Surname</label>
-        <input id="surname" type="text">
-    </div>
-    
-    <div class="form-field">
-        <label for="age">Age</label>
-        <input id="age" type="text">
-    </div>
-
-    <label for="info">Subscribe to newsletter</label>
-    <input type="checkbox" name="" id="info" (change)="info = !info">
-    <p [@fade] *ngIf="info">This is a placeholder for more information</p>
-    
-    <div class="button-group text-align-right">
-        <button type="button" class="button button-primary">Submit</button>
-        <button type="button" class="button button-secondary" (click)="modalRef.close()">Cancel</button>
-    </div>
+        <label for="info">Subscribe to newsletter</label>
+        <input formControlName="info" type="checkbox" name="" id="info" (change)="info = !info">
+        <p [@fade] *ngIf="info">This is a placeholder for more information</p>
+        
+        <div class="button-group text-align-right">
+            <button type="submit" class="button button-primary">Submit</button>
+            <button type="button" class="button button-secondary" (click)="modalRef.close()">Cancel</button>
+        </div>
+    </form>
 </ng-template>

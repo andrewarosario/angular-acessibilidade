@@ -1,4 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { fade } from '../shared/animations/fade';
 import { ModalRef } from '../shared/components/modal/models/modal-ref';
 import { ModalService } from '../shared/components/modal/services/modal.service';
@@ -14,10 +15,20 @@ export class AccessibleModalComponent implements OnInit {
   firstName = 'Andrew';
   public modalRef: ModalRef;
   public info = false;
+  public form: FormGroup;
 
-  constructor(private modalService: ModalService) { }
+  constructor(
+    private modalService: ModalService,
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      firstName: ['Andrew', Validators.required],
+      surname: ['', Validators.required],
+      age: ['', Validators.required],
+      info: [false],
+    })
   }
 
   public showModal(): void {
@@ -25,6 +36,11 @@ export class AccessibleModalComponent implements OnInit {
       templateRef: this.modalTemplateRef,
       title: 'User Details'
     });
+  }
+
+  public submit(): void {
+    console.log(this.form.value);
+    this.modalRef.close();
   }
 
 }
